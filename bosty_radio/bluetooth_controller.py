@@ -2,8 +2,6 @@
 
 import logging
 import subprocess
-import time
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +18,7 @@ class BluetoothController:
     def _run_command(self, *args: str, check: bool = False) -> subprocess.CompletedProcess:
         """Run a shell command."""
         try:
-            result = subprocess.run(
-                args, capture_output=True, text=True, check=check, timeout=30
-            )
+            result = subprocess.run(args, capture_output=True, text=True, check=check, timeout=30)
             return result
         except subprocess.TimeoutExpired:
             logger.error(f"Command timed out: {' '.join(args)}")
@@ -93,9 +89,7 @@ class BluetoothController:
             # Switch audio to Bluetooth (using pulseaudio or bluez-alsa)
             # This depends on the audio system setup
             # For pulseaudio:
-            result = self._run_command(
-                "pactl", "set-default-sink", "bluez_sink", check=False
-            )
+            result = self._run_command("pactl", "set-default-sink", "bluez_sink", check=False)
             if result.returncode != 0:
                 # Try alternative method
                 logger.warning("Primary Bluetooth sink method failed, trying alternative")
@@ -136,4 +130,3 @@ class BluetoothController:
     def is_pairing_mode(self) -> bool:
         """Check if in pairing mode."""
         return self._pairing_mode
-

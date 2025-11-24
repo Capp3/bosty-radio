@@ -6,10 +6,10 @@ from typing import Optional
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
-from textual.widgets import Button, Footer, Header, Input, Label, Select, Static
+from textual.widgets import Button, Footer, Header, Input, Label, Select
 
 from bosty_radio.config import ConfigManager, RadioConfig, StationConfig
-from bosty_radio.stations import get_all_stations, Station
+from bosty_radio.stations import get_all_stations
 
 logger = logging.getLogger(__name__)
 
@@ -357,4 +357,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

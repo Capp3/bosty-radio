@@ -138,9 +138,7 @@ class RadioController:
             self.gpio.setup()
 
             # Morse LED setup
-            self.morse_led = MorseLED(
-                self.config.gpio.led, self.config.morse_dot_duration_ms
-            )
+            self.morse_led = MorseLED(self.config.gpio.led, self.config.morse_dot_duration_ms)
             self.morse_led.setup()
 
             # Audio controller
@@ -242,4 +240,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

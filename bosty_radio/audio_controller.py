@@ -3,7 +3,6 @@
 import logging
 import subprocess
 import time
-from pathlib import Path
 from typing import Optional
 
 logger = logging.getLogger(__name__)
@@ -26,9 +25,7 @@ class AudioController:
         """Run MPC command and return result."""
         cmd = ["mpc"] + list(args)
         try:
-            result = subprocess.run(
-                cmd, capture_output=True, text=True, check=check, timeout=10
-            )
+            result = subprocess.run(cmd, capture_output=True, text=True, check=check, timeout=10)
             return result
         except subprocess.TimeoutExpired:
             logger.error(f"MPC command timed out: {' '.join(cmd)}")
@@ -153,4 +150,3 @@ class AudioController:
         if status:
             return "playing" in status.lower()
         return False
-

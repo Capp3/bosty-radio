@@ -3,7 +3,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -33,7 +33,9 @@ class GPIOConfig(BaseModel):
     position_6: int = Field(22, description="GPIO pin for position 6 (BCM)")
     led: int = Field(18, description="GPIO pin for LED (BCM)")
 
-    @field_validator("position_1", "position_2", "position_3", "position_4", "position_5", "position_6", "led")
+    @field_validator(
+        "position_1", "position_2", "position_3", "position_4", "position_5", "position_6", "led"
+    )
     @classmethod
     def validate_pin(cls, v: int) -> int:
         """Validate GPIO pin number is in valid range."""
@@ -56,10 +58,14 @@ class RadioConfig(BaseModel):
         description="Station configurations for positions 1-5",
     )
     bluetooth_morse: str = Field("BT", description="Morse code message for Bluetooth mode")
-    morse_dot_duration_ms: int = Field(100, ge=50, le=500, description="Morse code dot duration in milliseconds")
+    morse_dot_duration_ms: int = Field(
+        100, ge=50, le=500, description="Morse code dot duration in milliseconds"
+    )
     gpio: GPIOConfig = Field(default_factory=GPIOConfig, description="GPIO pin configuration")
     volume: int = Field(80, ge=0, le=100, description="Default volume level (0-100)")
-    error_tone_frequency_hz: int = Field(500, ge=200, le=2000, description="Error tone frequency in Hz")
+    error_tone_frequency_hz: int = Field(
+        500, ge=200, le=2000, description="Error tone frequency in Hz"
+    )
 
     @field_validator("stations")
     @classmethod
@@ -134,4 +140,3 @@ class ConfigManager:
         """Force reload configuration from file."""
         self._config = None
         return self.load()
-

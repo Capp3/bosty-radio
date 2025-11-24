@@ -110,4 +110,3 @@ def search_stations(query: str) -> List[Station]:
     stations = load_stations()
     query_lower = query.lower()
     return [s for s in stations if query_lower in s.name.lower()]
-

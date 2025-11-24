@@ -1,7 +1,7 @@
 # Bosty Radio Installation Makefile
 # For Raspberry Pi OS (bare install)
 
-.PHONY: help install install-deps install-mpd install-bluetooth install-python install-service configure clean uninstall
+.PHONY: help install install-deps install-mpd install-bluetooth install-python install-service configure lint lint-fix clean uninstall
 
 # Default target
 help:
@@ -15,6 +15,8 @@ help:
 	@echo "  install-python   - Install Python package with UV"
 	@echo "  install-service  - Install systemd service"
 	@echo "  configure        - Run configuration TUI"
+	@echo "  lint             - Run linting and format checks"
+	@echo "  lint-fix         - Auto-fix linting and formatting issues"
 	@echo "  clean            - Clean build artifacts"
 	@echo "  uninstall        - Remove installation"
 	@echo "  help             - Show this help message"
@@ -98,6 +100,45 @@ install-service:
 configure:
 	@echo "Starting configuration TUI..."
 	uv run python -m bosty_radio.tui
+
+# Run linting and format checks
+lint:
+	@echo "Running code quality checks..."
+	@echo ""
+	@echo "→ Checking code formatting with Black..."
+	uv run black --check bosty_radio/
+	@echo "✓ Black formatting check passed"
+	@echo ""
+	@echo "→ Linting with Ruff..."
+	uv run ruff check bosty_radio/
+	@echo "✓ Ruff linting passed"
+	@echo ""
+	@echo "→ Checking Python syntax..."
+	uv run python -m compileall -q bosty_radio/
+	@echo "✓ Syntax check passed"
+	@echo ""
+	@echo "→ Checking core imports..."
+	uv run python -c "from bosty_radio.config import ConfigManager; from bosty_radio.tui import ConfigApp; from bosty_radio.stations import load_stations; print('✓ Core imports OK')"
+	@echo ""
+	@echo "✓ All lint checks passed!"
+
+# Auto-fix linting and formatting issues
+lint-fix:
+	@echo "Auto-fixing code quality issues..."
+	@echo ""
+	@echo "→ Formatting code with Black..."
+	uv run black bosty_radio/
+	@echo "✓ Black formatting applied"
+	@echo ""
+	@echo "→ Auto-fixing with Ruff..."
+	uv run ruff check --fix bosty_radio/
+	@echo "✓ Ruff auto-fixes applied"
+	@echo ""
+	@echo "→ Checking Python syntax..."
+	uv run python -m compileall -q bosty_radio/
+	@echo "✓ Syntax check passed"
+	@echo ""
+	@echo "✓ All auto-fixes complete!"
 
 # Clean build artifacts
 clean:
