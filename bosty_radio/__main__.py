@@ -1,6 +1,5 @@
 """Main entry point for bosty_radio package."""
 
-
 if __name__ == "__main__":
     # Allow running as: python -m bosty_radio
     # Default to running the controller
