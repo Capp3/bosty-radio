@@ -28,21 +28,48 @@ uv run python -m bosty_radio.tui /path/to/config.json
 
 ## TUI Navigation
 
+The TUI uses a menu-driven interface similar to raspi-config for simple, intuitive navigation.
+
+### Main Menu
+
+When you start the TUI, you'll see the main menu with these options:
+
+1. **Configure Stations** - Set up radio stations 1-5
+2. **Bluetooth Settings** - Configure Bluetooth mode
+3. **Audio Settings** - Volume and morse timing
+4. **Advanced (GPIO Pins)** - Pin assignments
+5. **Save & Exit** - Save all changes and quit
+
 ### Keyboard Shortcuts
 
-- **Tab**: Navigate between fields
-- **Enter**: Edit selected field
-- **Esc**: Cancel editing
-- **S**: Save configuration
-- **Q**: Quit without saving
-- **H**: Show help
+**Navigation:**
+- **↑/↓ Arrow Keys**: Navigate menu items
+- **Enter**: Select menu option
+- **Tab**: Move between input fields
+- **Escape**: Go back to previous menu
+- **Q**: Quit (warns if unsaved changes)
+
+**Actions:**
+- **Ctrl+S**: Save configuration from any screen
+- **Escape**: Return to previous menu without saving
+
+### Navigation Flow
+
+1. Start at Main Menu
+2. Select a category (e.g., "Configure Stations")
+3. Choose specific item to edit (e.g., "Station 1")
+4. Make changes
+5. Save (auto-returns to previous screen)
+6. Navigate back with Escape to return to Main Menu
+7. Select "Save & Exit" when done
 
 ### Mouse Support
 
 The TUI also supports mouse interaction:
 
-- Click to select fields
-- Click buttons to activate
+- Click to select menu items
+- Click to activate buttons
+- Scroll to view long lists
 
 ## Configuration Sections
 
@@ -50,11 +77,27 @@ The TUI also supports mouse interaction:
 
 Configure each of the 5 stations that correspond to rotary switch positions 1-5.
 
-For each station, you can set:
+**To configure a station:**
 
-- **URL/Path**: Stream URL or local file path
-- **Morse Code Message**: Text to display via LED (e.g., "S1", "S2", "F1")
-- **Name** (optional): Human-readable station name
+1. Select "Configure Stations" from main menu
+2. Choose a station (1-5)
+3. Select input mode:
+   - **Manual Entry**: Enter URL directly
+   - **Select from Database**: Choose from pre-configured stations
+4. Enter or verify fields:
+   - **URL/Path**: Stream URL or local file path
+   - **Morse Code Message**: Text to display via LED (e.g., "S1", "S2", "F1")
+   - **Name** (optional): Human-readable station name
+5. Select "Save Station"
+
+**Using the Station Database:**
+
+If you choose "Select from Database":
+- Stations are grouped by category (e.g., "BBC", "NPR")
+- Navigate with arrow keys
+- Press Enter to select
+- URL and name will auto-populate
+- You can still edit fields after selection
 
 #### Allowed Source Formats
 
@@ -189,10 +232,36 @@ The TUI will create the file in the appropriate location based on permissions.
 
 ## Saving Configuration
 
-1. Fill in all required fields
-2. Press **S** or click "Save" button
-3. Status message will confirm success or show errors
-4. Restart service to apply changes:
+### Saving Individual Sections
+
+When editing a specific section (Station, Bluetooth, Audio, Advanced):
+
+1. Make your changes
+2. Select "Save Settings" or "Save Station"
+3. Status message shows success (green ✓) or error (red ✗)
+4. Automatically returns to previous menu
+
+### Saving All and Exiting
+
+From the main menu:
+
+1. Select "Save & Exit"
+2. All changes are written to the config file
+3. TUI closes automatically
+
+### Quick Save
+
+Press **Ctrl+S** from any screen to save immediately.
+
+### Unsaved Changes Warning
+
+If you try to quit with unsaved changes, the TUI will warn you and prevent quitting until you either:
+- Save your changes (Ctrl+S or "Save & Exit")
+- Acknowledge you want to discard changes
+
+### Applying Changes
+
+After saving configuration, restart the service:
 
 ```bash
 sudo systemctl restart bosty-radio

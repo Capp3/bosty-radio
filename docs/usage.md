@@ -121,16 +121,86 @@ Rotate switch to any other position (1-5):
 - MPD resumes control
 - Selected station/file starts playing
 
-## Volume Control
+## Configuration Interface
+
+Bosty Radio includes a menu-driven TUI (Text User Interface) for easy configuration:
+
+### Launching the TUI
+
+```bash
+# Standard way
+make configure
+
+# Direct invocation
+python -m bosty_radio.tui
+```
+
+### Navigation
+
+The TUI uses a simple menu system similar to raspi-config:
+
+**Keyboard Controls:**
+- **↑/↓ Arrow Keys**: Navigate menus
+- **Enter**: Select option
+- **Tab**: Move between input fields
+- **Escape**: Go back
+- **Q**: Quit
+- **Ctrl+S**: Save configuration
+
+### Main Menu Options
+
+1. **Configure Stations**: Set up radio stations (1-5)
+2. **Bluetooth Settings**: Configure Bluetooth mode message
+3. **Audio Settings**: Adjust volume and morse timing
+4. **Advanced (GPIO Pins)**: Modify GPIO pin assignments
+5. **Save & Exit**: Save configuration and quit
+
+### Configuring Stations
+
+1. Select "Configure Stations" from main menu
+2. Choose a station (1-5) to configure
+3. Select input mode:
+   - **Manual Entry**: Enter URL directly
+   - **Select from Database**: Choose from pre-configured stations
+4. Enter or verify:
+   - Stream URL or file path
+   - Morse code message (e.g., "S1", "S2")
+   - Station name (optional)
+5. Select "Save Station"
+6. Repeat for other stations
+7. Return to main menu with Escape
+
+### Using Station Database
+
+If you select "Select from Database":
+
+1. Browse stations grouped by category (e.g., BBC, NPR)
+2. Navigate with arrow keys
+3. Press Enter to select
+4. URL and name auto-populate
+5. Edit if needed
+6. Save station
+
+### Volume Control
 
 Volume is controlled via software (no hardware knob):
 
 1. Run configuration: `make configure`
-2. Adjust volume setting (0-100)
-3. Save configuration
-4. Restart service: `sudo systemctl restart bosty-radio`
+2. Navigate to "Audio Settings"
+3. Adjust volume setting (0-100)
+4. Save settings
+5. Exit TUI
+6. Restart service: `sudo systemctl restart bosty-radio`
 
 Volume changes take effect immediately after restart.
+
+### Configuration Tips
+
+- **Unsaved Changes**: TUI warns you if you try to quit with unsaved changes
+- **Validation**: Invalid inputs show error messages in red
+- **Success Feedback**: Successful saves show green checkmarks
+- **Non-Destructive**: Using "Back" doesn't save changes
+- **Quick Save**: Use Ctrl+S to save from any screen
 
 ## Service Management
 

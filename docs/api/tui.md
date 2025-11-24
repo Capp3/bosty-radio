@@ -4,9 +4,22 @@ API reference for the `bosty_radio.tui` module.
 
 ## Overview
 
-The TUI module provides a Textual-based terminal user interface for configuring Bosty Radio. It allows users to edit all configuration settings through a user-friendly interface without manually editing JSON files.
+The TUI module provides a menu-driven terminal user interface for configuring Bosty Radio. It uses a hierarchical navigation system similar to raspi-config, making it simple and intuitive to configure all settings.
 
 ## Module: `bosty_radio.tui`
+
+## Architecture
+
+The TUI uses a screen-based architecture with the following hierarchy:
+
+```
+MainMenuScreen (root)
+├── StationListScreen
+│   └── StationEditorScreen (for each station)
+├── BluetoothSettingsScreen
+├── AudioSettingsScreen
+└── AdvancedSettingsScreen
+```
 
 ## Functions
 
@@ -27,183 +40,378 @@ Main entry point for the TUI application.
 **Example:**
 
 ```bash
+# Standard way
+make configure
+
+# Direct Python
 python -m bosty_radio.tui
-# or
+
+# With custom config path
 python -m bosty_radio.tui /path/to/config.json
 ```
 
 ## Classes
 
-### `StationEditor`
-
-Editor for a single station configuration.
-
-```python
-class StationEditor(Container):
-    def __init__(self, station: StationConfig, index: int, *args, **kwargs)
-    def compose(self) -> ComposeResult
-    def get_station(self) -> StationConfig
-```
-
-#### Constructor
-
-**`**init**(station: StationConfig, index: int, \*args, **kwargs)`\*\*
-
-Initialize station editor.
-
-**Parameters:**
-
-- **`station`** (`StationConfig`): Station configuration to edit
-- **`index`** (`int`): Station index (0-4)
-- **`\*args, **kwargs`\*\*: Passed to Container
-
-#### Methods
-
-**`compose() -> ComposeResult`**
-
-Compose station editor UI.
-
-**Returns:**
-
-- **`ComposeResult`**: UI widgets
-
-**Widgets:**
-
-- Label with station number
-- Input for URL/path
-- Input for Morse code message
-- Input for station name (optional)
-
-**`get_station() -> StationConfig`**
-
-Get updated station configuration from UI.
-
-**Returns:**
-
-- **`StationConfig`**: Updated station configuration
-
-**Behavior:**
-
-- Reads values from input widgets
-- Creates new StationConfig
-- Uses default Morse message if empty
-
 ### `ConfigApp`
 
-Main configuration TUI application.
+Main configuration application (extends Textual's App).
 
 ```python
 class ConfigApp(App):
-    def __init__(self, config_path: Optional[Path] = None, *args, **kwargs)
-    def compose(self) -> ComposeResult
+    def __init__(self, config_path: Optional[Path] = None)
+    def on_mount(self) -> None
     def action_save(self) -> None
-    def action_help(self) -> None
-    def action_quit(self) -> None
-    def on_button_pressed(self, event: Button.Pressed) -> None
+    def action_save_and_exit(self) -> None
+    async def action_quit(self) -> None
 ```
 
 #### Constructor
 
-**`**init**(config_path: Optional[Path] = None, \*args, **kwargs)`\*\*
+**`__init__(config_path: Optional[Path] = None)`**
 
 Initialize config app.
 
 **Parameters:**
 
 - **`config_path`** (`Optional[Path]`): Optional path to config file
-- **`\*args, **kwargs`\*\*: Passed to App
 
 **Behavior:**
 
 - Creates ConfigManager with optional path
 - Loads configuration
+- Initializes config_dirty flag for tracking unsaved changes
+
+#### Attributes
+
+- **`config`** (`RadioConfig`): Current configuration
+- **`config_manager`** (`ConfigManager`): Configuration file manager
+- **`config_dirty`** (`bool`): True if there are unsaved changes
 
 #### Methods
 
-**`compose() -> ComposeResult`**
+**`on_mount() -> None`**
 
-Compose main UI.
-
-**Returns:**
-
-- **`ComposeResult`**: UI widgets
-
-**UI Structure:**
-
-- Header with clock
-- Scrollable container with:
-  - Title
-  - Status label
-  - Help section (allowed sources)
-  - Station editors (5 stations)
-  - Bluetooth Morse input
-  - Morse timing input
-  - Volume input
-  - GPIO pin inputs (advanced)
-- Button bar (Save, Cancel)
-- Footer
+Push main menu when app starts.
 
 **`action_save() -> None`**
 
-Save configuration.
+Save configuration to file (keyboard shortcut: Ctrl+S).
 
-**Behavior:**
+**`action_save_and_exit() -> None`**
 
-1. Collects data from all UI fields
-2. Validates configuration
-3. Saves to file
-4. Updates status message (success/error)
+Save configuration and exit application.
 
-**Status Messages:**
+**`async action_quit() -> None`**
 
-- Green: "✓ Configuration saved successfully!"
-- Red: Error message with details
-
-**`action_help() -> None`**
-
-Show help information.
-
-**Behavior:**
-
-- Updates status label with help text
-- Help is also visible in UI above
-
-**`action_quit() -> None`**
-
-Quit application.
-
-**Behavior:**
-
-- Exits the TUI application
-
-**`on_button_pressed(event: Button.Pressed) -> None`**
-
-Handle button presses.
-
-**Parameters:**
-
-- **`event`** (`Button.Pressed`): Button press event
-
-**Behavior:**
-
-- "Save" button: Calls `action_save()`
-- "Cancel" button: Exits application
+Quit application with warning if there are unsaved changes (keyboard shortcut: Q).
 
 #### Keyboard Bindings
 
-- **Q**: Quit
-- **S**: Save
-- **H**: Help
+- **Q**: Quit (warns if unsaved changes)
+- **Ctrl+S**: Save configuration
 
-#### CSS Styling
+### `MainMenuScreen`
 
-The app includes custom CSS for:
+Root menu screen with main configuration categories.
 
-- Screen background
-- Config container padding
-- Station label styling
-- Help text panel
-- Button margins
+```python
+class MainMenuScreen(Screen):
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    async def action_quit(self) -> None
+```
+
+**Menu Options:**
+
+1. Configure Stations
+2. Bluetooth Settings
+3. Audio Settings
+4. Advanced (GPIO Pins)
+5. Save & Exit
+
+**Keyboard Bindings:**
+
+- **Q/Escape**: Quit application
+- **↑/↓**: Navigate menu
+- **Enter**: Select option
+
+### `StationListScreen`
+
+List of stations (1-5) to configure.
+
+```python
+class StationListScreen(Screen):
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    def action_back(self) -> None
+    async def action_quit(self) -> None
+```
+
+**Menu Options:**
+
+- Station 1
+- Station 2
+- Station 3
+- Station 4
+- Station 5
+- < Back to Main Menu
+
+**Keyboard Bindings:**
+
+- **Escape**: Back to main menu
+- **Q**: Quit application
+- **↑/↓**: Navigate stations
+- **Enter**: Edit station
+
+### `StationEditorScreen`
+
+Editor for configuring an individual station.
+
+```python
+class StationEditorScreen(Screen):
+    def __init__(self, station_index: int)
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    def action_save(self) -> None
+    def action_back(self) -> None
+    async def action_quit(self) -> None
+```
+
+#### Constructor
+
+**`__init__(station_index: int)`**
+
+Initialize station editor.
+
+**Parameters:**
+
+- **`station_index`** (`int`): Station index (0-4 for stations 1-5)
+
+**Attributes:**
+
+- **`station_index`** (`int`): Index of station being edited
+- **`mode`** (`str`): Current mode ("manual" or "database")
+- **`available_stations`** (`List[Station]`): Stations from database
+- **`stations_by_category`** (`Dict[str, List[Station]]`): Stations grouped by category
+
+#### UI Components
+
+**Input Mode Selection:**
+- Manual Entry
+- Select from Database
+
+**Database Mode:**
+- Searchable list of stations grouped by category
+- Selecting a station auto-populates URL and name
+
+**Manual Mode:**
+- Stream URL or file path input
+- Direct URL entry
+
+**Common Fields:**
+- Morse Code Message
+- Station Name (optional)
+
+**Actions:**
+- Save Station
+- Back to Station List
+
+**Keyboard Bindings:**
+
+- **Escape**: Back without saving
+- **Ctrl+S**: Save station
+- **Q**: Quit application
+- **↑/↓**: Navigate options
+- **Tab**: Move between input fields
+
+#### Methods
+
+**`on_mount() -> None`**
+
+Populates database list with stations grouped by category.
+
+**`_switch_to_manual_mode() -> None`**
+
+Switch to manual URL entry mode.
+
+**`_switch_to_database_mode() -> None`**
+
+Switch to database selection mode.
+
+**`_populate_from_database(station_name: str) -> None`**
+
+Auto-populate fields when a database station is selected.
+
+**`_save_station() -> None`**
+
+Validate and save station configuration.
+
+### `BluetoothSettingsScreen`
+
+Configure Bluetooth mode settings.
+
+```python
+class BluetoothSettingsScreen(Screen):
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    def action_save(self) -> None
+    def action_back(self) -> None
+    async def action_quit(self) -> None
+```
+
+**UI Components:**
+
+- Bluetooth Morse Code Message input (default: "BT")
+- Help text explaining the message usage
+- Save Settings
+- Back to Main Menu
+
+**Keyboard Bindings:**
+
+- **Escape**: Back without saving
+- **Ctrl+S**: Save settings
+- **Q**: Quit application
+- **Tab**: Navigate fields
+
+### `AudioSettingsScreen`
+
+Configure audio and morse code settings.
+
+```python
+class AudioSettingsScreen(Screen):
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    def action_save(self) -> None
+    def action_back(self) -> None
+    async def action_quit(self) -> None
+```
+
+**UI Components:**
+
+- Volume (0-100)
+- Morse Code Dot Duration (50-500 ms)
+- Save Settings
+- Back to Main Menu
+
+**Validation:**
+
+- Volume must be between 0 and 100
+- Morse dot duration must be between 50 and 500 ms
+
+**Keyboard Bindings:**
+
+- **Escape**: Back without saving
+- **Ctrl+S**: Save settings
+- **Q**: Quit application
+- **Tab**: Navigate fields
+
+### `AdvancedSettingsScreen`
+
+Configure GPIO pin assignments (advanced users).
+
+```python
+class AdvancedSettingsScreen(Screen):
+    def compose(self) -> ComposeResult
+    def on_mount(self) -> None
+    def on_option_list_option_selected(self, event) -> None
+    def action_save(self) -> None
+    def action_back(self) -> None
+    async def action_quit(self) -> None
+```
+
+**UI Components:**
+
+- Warning message
+- GPIO Pin inputs for:
+  - Position 1 Pin
+  - Position 2 Pin
+  - Position 3 Pin
+  - Position 4 Pin
+  - Position 5 Pin
+  - Position 6 Pin
+  - LED Pin
+- Save Settings
+- Back to Main Menu
+
+**Validation:**
+
+- All pins must be in valid GPIO range (2-27)
+- All pins must be unique (no duplicates)
+
+**Keyboard Bindings:**
+
+- **Escape**: Back without saving
+- **Ctrl+S**: Save settings
+- **Q**: Quit application
+- **Tab**: Navigate fields
+
+## Navigation
+
+### General Navigation
+
+- **↑/↓ Arrow Keys**: Navigate menu items and options
+- **Enter**: Select menu item or confirm input
+- **Tab**: Move between input fields
+- **Escape**: Go back to previous screen
+- **Q**: Quit application (warns if unsaved changes)
+- **Ctrl+S**: Save configuration from any screen
+
+### Navigation Flow
+
+1. Start at Main Menu
+2. Select a category (Stations, Bluetooth, Audio, Advanced)
+3. Edit settings in the category screen
+4. Save changes (auto-returns to previous screen)
+5. Navigate back with Escape if not saving
+6. Return to Main Menu
+7. Select "Save & Exit" to save all changes and quit
+
+## Status Messages
+
+All screens display status messages:
+
+- **Green "✓"**: Success (e.g., "Station saved!")
+- **Red "✗"**: Error with details (e.g., "Volume must be between 0 and 100")
+- **Yellow Warning**: Unsaved changes notification
+
+## Notifications
+
+The app uses Textual's notification system:
+
+- **Information**: Configuration saved successfully
+- **Warning**: Unsaved changes when quitting
+- **Error**: Failed to save configuration
+
+## Error Handling
+
+### Validation Errors
+
+When validation fails:
+
+- Error message displayed in red
+- User remains on the edit screen
+- Can correct and retry
+
+### Save Errors
+
+If save fails:
+
+- Error notification shown
+- Configuration not written to file
+- User can retry or cancel
+
+### Input Validation
+
+- Station URL: Cannot be empty
+- Morse message: Defaults to "S1", "S2", etc. if empty
+- Volume: Must be 0-100
+- Morse dot duration: Must be 50-500 ms
+- GPIO pins: Must be 2-27 and unique
 
 ## Usage Examples
 
@@ -213,142 +421,78 @@ The app includes custom CSS for:
 # Standard way
 make configure
 
-# Direct Python
-uv run python -m bosty_radio.tui
+# Direct invocation
+python -m bosty_radio.tui
 
 # With custom config path
-uv run python -m bosty_radio.tui /path/to/config.json
+python -m bosty_radio.tui /path/to/config.json
 ```
 
-### Programmatic Usage
+### Typical Workflow
 
-```python
-from pathlib import Path
-from bosty_radio.tui import ConfigApp
+1. Launch TUI
+2. Navigate to "Configure Stations"
+3. Select "Station 1"
+4. Choose "Manual Entry" or "Select from Database"
+5. If database: Select station from list
+6. Edit morse message if desired
+7. Select "Save Station"
+8. Repeat for other stations
+9. Return to Main Menu
+10. Select "Save & Exit"
 
-# Create and run app
-app = ConfigApp(Path("/custom/config.json"))
-app.run()
-```
+### Database Selection
 
-### Customization
+1. In Station Editor, select "Select from Database"
+2. Browse stations grouped by category (e.g., "--- BBC ---")
+3. Navigate with arrow keys
+4. Press Enter to select
+5. URL and name auto-populate
+6. Edit if needed
+7. Save station
 
-The TUI can be customized by:
+## CSS Styling
 
-1. **Modifying CSS**: Edit the `CSS` class variable
-2. **Adding fields**: Extend `compose()` method
-3. **Custom validation**: Modify `action_save()`
-4. **Additional bindings**: Add to `BINDINGS` list
+The TUI includes custom CSS for consistent appearance:
 
-## UI Navigation
-
-### Keyboard Navigation
-
-- **Tab**: Move to next field
-- **Shift+Tab**: Move to previous field
-- **Enter**: Edit selected field
-- **Esc**: Cancel editing
-- **Arrow keys**: Navigate within fields
-- **S**: Save configuration
-- **Q**: Quit
-- **H**: Show help
-
-### Mouse Support
-
-- Click to select fields
-- Click buttons to activate
-- Scroll to navigate long forms
-
-## Configuration Sections
-
-### Help Section
-
-Shows allowed source formats:
-
-- Internet Radio URLs (http/https)
-- Local file paths
-- Example formats
-
-### Stations Section
-
-Five station editors, one for each position (1-5):
-
-- URL/Path input
-- Morse code message input
-- Station name input (optional)
-
-### Bluetooth Mode
-
-- Morse code message input (default: "BT")
-
-### Morse Code Settings
-
-- Dot duration in milliseconds (50-500)
-
-### Volume
-
-- Volume level (0-100)
-
-### GPIO Pins (Advanced)
-
-- Individual pin inputs for all 7 GPIO pins
-- Only change if needed
-
-## Validation
-
-### Pre-Save Validation
-
-Before saving:
-
-- Station URLs: Must be valid format
-- Morse messages: Must be non-empty
-- Volume: Must be 0-100
-- GPIO pins: Must be valid numbers (2-27)
-- Dot duration: Must be 50-500ms
-
-### Pydantic Validation
-
-After collecting data:
-
-- Creates RadioConfig instance
-- Pydantic validates all fields
-- Raises ValueError on validation failure
-
-## Error Handling
-
-### Save Errors
-
-If save fails:
-
-- Error message displayed in red
-- Configuration not saved
-- User can correct and retry
-
-### Validation Errors
-
-If validation fails:
-
-- Error message shows specific issue
-- Invalid fields highlighted
-- User can correct and retry
-
-### File Errors
-
-If file cannot be written:
-
-- Error logged
-- Error message displayed
-- User notified
-
-## Status Messages
-
-The status label shows:
-
-- **Green**: Success messages
-- **Red**: Error messages
-- **Default**: Help/info messages
+- Primary color highlights for active selections
+- Panel backgrounds for help text
+- Warning colors for advanced settings
+- Proper spacing and margins
+- Hidden class for conditional elements
 
 ## Related Modules
 
 - **[Configuration](config.md)**: Provides configuration models
-- **[Radio Controller](radio-controller.md)**: Uses configuration
+- **[Stations](../stations.md)**: Station database for selection
+- **[Radio Controller](radio-controller.md)**: Uses saved configuration
+
+## Design Philosophy
+
+The new TUI follows these principles:
+
+1. **Simple Navigation**: Menu-driven like raspi-config
+2. **Clear Hierarchy**: Logical grouping of settings
+3. **Focus Management**: Proper keyboard navigation
+4. **Immediate Feedback**: Status messages and validation
+5. **Non-Destructive**: Back button doesn't save changes
+6. **Intuitive**: Common keyboard shortcuts (Q, Ctrl+S, Escape)
+
+## Differences from Previous Version
+
+The menu-driven TUI replaces the previous scrollable form:
+
+**Old (Form-Based):**
+- All settings on one long scrollable page
+- Complex toggle system for each station
+- Harder to navigate with keyboard
+- Easy to get lost in options
+
+**New (Menu-Driven):**
+- Hierarchical menu system
+- One task at a time
+- Clear navigation path
+- Simple keyboard navigation
+- Similar to raspi-config or other CLI tools
+
+This makes the TUI more approachable and easier to use, especially for those familiar with traditional console configuration tools.
