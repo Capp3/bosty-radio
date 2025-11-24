@@ -1,0 +1,62 @@
+site_name: Bosty Radio
+site_description: Headless GPIO Rotary Internet Radio for Raspberry Pi
+site_author: Bosty Radio Contributors
+
+# Repository
+repo_name: bosty-radio
+repo_url: https://github.com/yourusername/bosty-radio
+
+# Configuration
+theme:
+  name: readthedocs
+  highlightjs: true
+  include_search_page: false
+  search_index_only: false
+
+# Plugins
+plugins:
+  - search
+
+# Markdown extensions
+markdown_extensions:
+  - codehilite:
+      use_pygments: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - attr_list
+  - md_in_html
+
+# Page tree
+nav:
+  - Home: index.md
+  - User Documentation:
+      - Getting Started: getting-started.md
+      - Hardware Setup: hardware-setup.md
+      - Installation: installation.md
+      - Configuration: configuration.md
+      - Usage Guide: usage.md
+      - Troubleshooting: troubleshooting.md
+  - Developer Documentation:
+      - Development Guide: development.md
+      - Architecture: architecture.md
+      - API Reference:
+          - Configuration: api/config.md
+          - GPIO Controller: api/gpio-controller.md
+          - Morse LED: api/morse-led.md
+          - Audio Controller: api/audio-controller.md
+          - Bluetooth Controller: api/bluetooth-controller.md
+          - Radio Controller: api/radio-controller.md
+          - TUI: api/tui.md

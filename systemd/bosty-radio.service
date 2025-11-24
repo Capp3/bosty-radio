@@ -1,0 +1,29 @@
+[Unit]
+Description=Bosty Radio Controller
+After=network.target sound.target bluetooth.service mpd.service
+Wants=mpd.service bluetooth.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/pi/bosty-radio
+# Try common UV installation locations
+ExecStart=/bin/bash -c 'if [ -f /usr/local/bin/uv ]; then /usr/local/bin/uv run --system python -m bosty_radio.radio_controller; elif [ -f /home/pi/.cargo/bin/uv ]; then /home/pi/.cargo/bin/uv run --system python -m bosty_radio.radio_controller; else uv run --system python -m bosty_radio.radio_controller; fi'
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=bosty-radio
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/pi/.cargo/bin"
+
+# Security (run as non-root if possible, but GPIO may need root)
+# User=pi
+# Group=pi
+
+[Install]
+WantedBy=multi-user.target
+

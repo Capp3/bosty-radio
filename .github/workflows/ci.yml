@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-format:
+    name: Lint and Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          uv sync --dev
+
+      - name: Check code formatting with Black
+        run: |
+          uv run black --check bosty_radio/
+
+      - name: Lint with Ruff
+        run: |
+          uv run ruff check bosty_radio/
+
+      - name: Check syntax
+        run: |
+          uv run python -m compileall -q bosty_radio/
+
+      - name: Check non-GPIO imports
+        run: |
+          uv run python -c "from bosty_radio.config import ConfigManager; from bosty_radio.tui import ConfigApp; print('Core imports OK')"
+
+  docs:
+    name: Documentation Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build documentation
+        run: |
+          uvx mkdocs build --strict
+

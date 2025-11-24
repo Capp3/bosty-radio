@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://your-docs-site.com
+    about: Check the documentation for answers
+  - name: Discussions
+    url: https://github.com/yourusername/bosty-radio/discussions
+    about: Ask questions and discuss ideas

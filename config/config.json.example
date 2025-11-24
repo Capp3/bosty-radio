@@ -1,0 +1,43 @@
+{
+  "stations": [
+    {
+      "url": "http://stream.example.com:8000/stream.mp3",
+      "morse_message": "S1",
+      "name": "Station 1"
+    },
+    {
+      "url": "https://example.com/stream.m3u",
+      "morse_message": "S2",
+      "name": "Station 2"
+    },
+    {
+      "url": "http://example.com/playlist.pls",
+      "morse_message": "S3",
+      "name": "Station 3"
+    },
+    {
+      "url": "http://stream.example.com:8080/radio",
+      "morse_message": "S4",
+      "name": "Station 4"
+    },
+    {
+      "url": "/home/pi/music/recording.mp3",
+      "morse_message": "F1",
+      "name": "Local File"
+    }
+  ],
+  "bluetooth_morse": "BT",
+  "morse_dot_duration_ms": 100,
+  "volume": 80,
+  "error_tone_frequency_hz": 500,
+  "gpio": {
+    "position_1": 2,
+    "position_2": 3,
+    "position_3": 4,
+    "position_4": 17,
+    "position_5": 27,
+    "position_6": 22,
+    "led": 18
+  }
+}
+
