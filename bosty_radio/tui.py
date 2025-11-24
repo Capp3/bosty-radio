@@ -9,6 +9,7 @@ from textual.containers import Container, Horizontal, ScrollableContainer, Verti
 from textual.widgets import Button, Footer, Header, Input, Label, Select, Static
 
 from bosty_radio.config import ConfigManager, RadioConfig, StationConfig
+from bosty_radio.stations import get_all_stations, Station
 
 logger = logging.getLogger(__name__)
 
@@ -21,15 +22,45 @@ class StationEditor(Container):
         super().__init__(*args, **kwargs)
         self.station = station
         self.index = index
+        self.mode = "manual"  # Start in manual mode
+        self.available_stations = get_all_stations()
 
     def compose(self) -> ComposeResult:
         """Compose station editor UI."""
         with Vertical():
             yield Label(f"Station {self.index + 1}", classes="station-label")
+
+            # Toggle button for mode selection
+            with Horizontal(classes="mode-toggle"):
+                yield Button(
+                    "Database",
+                    id=f"station-{self.index}-mode-database",
+                    variant="default",
+                )
+                yield Button(
+                    "Manual",
+                    id=f"station-{self.index}-mode-manual",
+                    variant="primary",
+                )
+
+            # Database selection (initially hidden)
+            if self.available_stations:
+                # Build options for Select widget: (display_text, value)
+                station_options = [("-- Select a station --", "")] + [
+                    (f"{s.name} ({s.category})", s.name) for s in self.available_stations
+                ]
+                yield Select(
+                    station_options,
+                    id=f"station-{self.index}-select",
+                    classes="station-select hidden",
+                )
+
+            # Manual input fields
             yield Input(
                 self.station.url,
                 placeholder="Stream URL or file path",
                 id=f"station-{self.index}-url",
+                classes="manual-input",
             )
             yield Input(
                 self.station.morse_message,
@@ -41,6 +72,66 @@ class StationEditor(Container):
                 placeholder="Station name (optional)",
                 id=f"station-{self.index}-name",
             )
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle mode toggle button presses."""
+        button_id = event.button.id
+
+        if button_id == f"station-{self.index}-mode-database":
+            self._switch_to_database_mode()
+        elif button_id == f"station-{self.index}-mode-manual":
+            self._switch_to_manual_mode()
+
+    def _switch_to_database_mode(self) -> None:
+        """Switch to database selection mode."""
+        self.mode = "database"
+
+        # Update button styles
+        db_button = self.query_one(f"#station-{self.index}-mode-database", Button)
+        manual_button = self.query_one(f"#station-{self.index}-mode-manual", Button)
+        db_button.variant = "primary"
+        manual_button.variant = "default"
+
+        # Show select, keep URL input visible but de-emphasize
+        try:
+            select_widget = self.query_one(f"#station-{self.index}-select", Select)
+            select_widget.remove_class("hidden")
+        except Exception:
+            pass  # Select widget might not exist if no stations loaded
+
+    def _switch_to_manual_mode(self) -> None:
+        """Switch to manual entry mode."""
+        self.mode = "manual"
+
+        # Update button styles
+        db_button = self.query_one(f"#station-{self.index}-mode-database", Button)
+        manual_button = self.query_one(f"#station-{self.index}-mode-manual", Button)
+        db_button.variant = "default"
+        manual_button.variant = "primary"
+
+        # Hide select
+        try:
+            select_widget = self.query_one(f"#station-{self.index}-select", Select)
+            select_widget.add_class("hidden")
+        except Exception:
+            pass
+
+    def on_select_changed(self, event: Select.Changed) -> None:
+        """Handle station selection from database."""
+        if event.select.id == f"station-{self.index}-select":
+            selected_name = event.value
+
+            if selected_name:
+                # Find the selected station
+                for station in self.available_stations:
+                    if station.name == selected_name:
+                        # Auto-populate URL and name fields
+                        url_input = self.query_one(f"#station-{self.index}-url", Input)
+                        name_input = self.query_one(f"#station-{self.index}-name", Input)
+
+                        url_input.value = station.url
+                        name_input.value = station.name
+                        break
 
     def get_station(self) -> StationConfig:
         """Get updated station configuration from UI."""
@@ -78,6 +169,20 @@ class ConfigApp(App):
     }
     Button {
         margin: 1;
+    }
+    .mode-toggle {
+        height: auto;
+        margin-bottom: 1;
+    }
+    .mode-toggle Button {
+        margin: 0 1 0 0;
+        min-width: 12;
+    }
+    .station-select {
+        margin-bottom: 1;
+    }
+    .hidden {
+        display: none;
     }
     """
 
@@ -194,6 +299,7 @@ class ConfigApp(App):
                 morse_dot_duration_ms=morse_dot,
                 volume=volume,
                 gpio=self.config.gpio.__class__(**gpio_config),
+                error_tone_frequency_hz=self.config.error_tone_frequency_hz,
             )
 
             # Validate
@@ -230,7 +336,7 @@ class ConfigApp(App):
         elif event.button.id == "cancel-button":
             self.exit()
 
-    def action_quit(self) -> None:
+    async def action_quit(self) -> None:
         """Quit application."""
         self.exit()
 

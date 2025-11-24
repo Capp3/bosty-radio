@@ -1,0 +1,718 @@
+[
+  {
+    "name": "BBC - Radio 1",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_01505109/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 1Xtra",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_92079267/live/ww/bbc_1xtra/bbc_1xtra.isml/bbc_1xtra-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 1Dance",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_62063831/live/ww/bbc_radio_one_dance/bbc_radio_one_dance.isml/bbc_radio_one_dance-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 1 Anthems (UK Only)",
+    "url": "http://as-hls-uk-live.akamaized.net/pool_11351741/live/uk/bbc_radio_one_anthems/bbc_radio_one_anthems.isml/bbc_radio_one_anthems-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 2",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_74208725/live/ww/bbc_radio_two/bbc_radio_two.isml/bbc_radio_two-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 3",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_23461179/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 3 Unwind (UK Only)",
+    "url": "http://as-hls-uk-live.akamaized.net/pool_30624046/live/uk/bbc_radio_three_unwind/bbc_radio_three_unwind.isml/bbc_radio_three_unwind-audio%3d320000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 4",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_55057080/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 4 Extra",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_26173715/live/ww/bbc_radio_four_extra/bbc_radio_four_extra.isml/bbc_radio_four_extra-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 5 live",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_89021708/live/ww/bbc_radio_five_live/bbc_radio_five_live.isml/bbc_radio_five_live-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 6 Music",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_81827798/live/ww/bbc_6music/bbc_6music.isml/bbc_6music-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio 5 Live sports extra (UK Only)",
+    "url": "http://as-hls-uk-live.akamaized.net/pool_47700285/live/uk/bbc_radio_five_live_sports_extra/bbc_radio_five_live_sports_extra.isml/bbc_radio_five_live_sports_extra-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Asian Network",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_22108647/live/ww/bbc_asian_network/bbc_asian_network.isml/bbc_asian_network-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - BBC World Service",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_87948813/live/ww/bbc_world_service/bbc_world_service.isml/bbc_world_service-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - BBC CWR",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_79805333/live/ww/bbc_radio_coventry_warwickshire/bbc_radio_coventry_warwickshire.isml/bbc_radio_coventry_warwickshire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - BBC Essex",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_23657270/live/ww/bbc_radio_essex/bbc_radio_essex.isml/bbc_radio_essex-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - BBC Hereford Worcester",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_80112859/live/ww/bbc_radio_hereford_worcester/bbc_radio_hereford_worcester.isml/bbc_radio_hereford_worcester-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Berkshire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_64162474/live/ww/bbc_radio_berkshire/bbc_radio_berkshire.isml/bbc_radio_berkshire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Bristol",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_41858929/live/ww/bbc_radio_bristol/bbc_radio_bristol.isml/bbc_radio_bristol-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Cambridge",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_21074581/live/ww/bbc_radio_cambridge/bbc_radio_cambridge.isml/bbc_radio_cambridge-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Cornwall",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_72477894/live/ww/bbc_radio_cornwall/bbc_radio_cornwall.isml/bbc_radio_cornwall-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Cumbria",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_85294020/live/ww/bbc_radio_cumbria/bbc_radio_cumbria.isml/bbc_radio_cumbria-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Cymru",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_24792333/live/ww/bbc_radio_cymru/bbc_radio_cymru.isml/bbc_radio_cymru-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Cymru 2",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_98610936/live/ww/bbc_radio_cymru_2/bbc_radio_cymru_2.isml/bbc_radio_cymru_2-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Derby",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_63732303/live/ww/bbc_radio_derby/bbc_radio_derby.isml/bbc_radio_derby-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Devon",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_08856933/live/ww/bbc_radio_devon/bbc_radio_devon.isml/bbc_radio_devon-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Foyle",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_43178797/live/ww/bbc_radio_foyle/bbc_radio_foyle.isml/bbc_radio_foyle-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Gloucestershire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_74607547/live/ww/bbc_radio_gloucestershire/bbc_radio_gloucestershire.isml/bbc_radio_gloucestershire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Guernsey",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_65313722/live/ww/bbc_radio_guernsey/bbc_radio_guernsey.isml/bbc_radio_guernsey-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Humberside",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_43379345/live/ww/bbc_radio_humberside/bbc_radio_humberside.isml/bbc_radio_humberside-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Jersey",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_14000630/live/ww/bbc_radio_jersey/bbc_radio_jersey.isml/bbc_radio_jersey-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Kent",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_17754185/live/ww/bbc_radio_kent/bbc_radio_kent.isml/bbc_radio_kent-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Lancashire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_98146551/live/ww/bbc_radio_lancashire/bbc_radio_lancashire.isml/bbc_radio_lancashire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Leeds",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_50115440/live/ww/bbc_radio_leeds/bbc_radio_leeds.isml/bbc_radio_leeds-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Leicester",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_04542919/live/ww/bbc_radio_leicester/bbc_radio_leicester.isml/bbc_radio_leicester-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Lincolnshire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_77667780/live/ww/bbc_radio_lincolnshire/bbc_radio_lincolnshire.isml/bbc_radio_lincolnshire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio London",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_98137350/live/ww/bbc_london/bbc_london.isml/bbc_london-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Manchester",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_25317916/live/ww/bbc_radio_manchester/bbc_radio_manchester.isml/bbc_radio_manchester-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Merseyside",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_46699767/live/ww/bbc_radio_merseyside/bbc_radio_merseyside.isml/bbc_radio_merseyside-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio nan Gaidheal",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_01935182/live/ww/bbc_radio_nan_gaidheal/bbc_radio_nan_gaidheal.isml/bbc_radio_nan_gaidheal-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Newcastle",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_46887953/live/ww/bbc_radio_newcastle/bbc_radio_newcastle.isml/bbc_radio_newcastle-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Norfolk",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_61510571/live/ww/bbc_radio_norfolk/bbc_radio_norfolk.isml/bbc_radio_norfolk-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Northampton",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_73827654/live/ww/bbc_radio_northampton/bbc_radio_northampton.isml/bbc_radio_northampton-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Nottingham",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_96088503/live/ww/bbc_radio_nottingham/bbc_radio_nottingham.isml/bbc_radio_nottingham-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Orkney",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_50082558/live/ww/bbc_radio_orkney/bbc_radio_orkney.isml/bbc_radio_orkney-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Oxford",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_19212690/live/ww/bbc_radio_oxford/bbc_radio_oxford.isml/bbc_radio_oxford-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Scotland FM",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_43322914/live/ww/bbc_radio_scotland_fm/bbc_radio_scotland_fm.isml/bbc_radio_scotland_fm-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Scotland MW",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_59378121/live/ww/bbc_radio_scotland_mw/bbc_radio_scotland_mw.isml/bbc_radio_scotland_mw-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Sheffield",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_19967704/live/ww/bbc_radio_sheffield/bbc_radio_sheffield.isml/bbc_radio_sheffield-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Shropshire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_83478576/live/ww/bbc_radio_shropshire/bbc_radio_shropshire.isml/bbc_radio_shropshire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Solent",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_11685351/live/ww/bbc_radio_solent/bbc_radio_solent.isml/bbc_radio_solent-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Solent West Dorset",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_48517520/live/ww/bbc_radio_solent_west_dorset/bbc_radio_solent_west_dorset.isml/bbc_radio_solent_west_dorset-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Somerset Sound",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_00727706/live/ww/bbc_radio_somerset_sound/bbc_radio_somerset_sound.isml/bbc_radio_somerset_sound-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Stoke",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_34849862/live/ww/bbc_radio_stoke/bbc_radio_stoke.isml/bbc_radio_stoke-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Suffolk",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_18067288/live/ww/bbc_radio_suffolk/bbc_radio_suffolk.isml/bbc_radio_suffolk-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Surrey",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_27374427/live/ww/bbc_radio_surrey/bbc_radio_surrey.isml/bbc_radio_surrey-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Sussex",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_76643803/live/ww/bbc_radio_sussex/bbc_radio_sussex.isml/bbc_radio_sussex-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Tees",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_08918172/live/ww/bbc_tees/bbc_tees.isml/bbc_tees-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Ulster",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_31244774/live/ww/bbc_radio_ulster/bbc_radio_ulster.isml/bbc_radio_ulster-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Wales",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_97517794/live/ww/bbc_radio_wales_fm/bbc_radio_wales_fm.isml/bbc_radio_wales_fm-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio Wiltshire",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_44240917/live/ww/bbc_radio_wiltshire/bbc_radio_wiltshire.isml/bbc_radio_wiltshire-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio WM",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_05353924/live/ww/bbc_wm/bbc_wm.isml/bbc_wm-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Radio York",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_90848428/live/ww/bbc_radio_york/bbc_radio_york.isml/bbc_radio_york-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "BBC - Three Counties Radio",
+    "url": "http://as-hls-ww-live.akamaized.net/pool_69997923/live/ww/bbc_three_counties_radio/bbc_three_counties_radio.isml/bbc_three_counties_radio-audio%3d96000.norewind.m3u8",
+    "category": "BBC"
+  },
+  {
+    "name": "Absolute Radio",
+    "url": "http://icy-e-04-cr.sharp-stream.com/absolute.aac",
+    "category": "UK Radio"
+  },
+  {
+    "name": "The Big Top 40 Show",
+    "url": "http://media-ice.musicradio.com/BigTop40",
+    "category": "UK Radio"
+  },
+  {
+    "name": "The Big Top 40 Show V1",
+    "url": "http://media-ice.musicradio.com/BigTop40V1",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital London",
+    "url": "http://media-ice.musicradio.com/Capital",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Anthems",
+    "url": "http://media-ice.musicradio.com/CapitalAnthems",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Birmingham",
+    "url": "http://media-ice.musicradio.com/CapitalBirmingham",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Brighton",
+    "url": "http://media-ice.musicradio.com/CapitalBrighton",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Lancashire - Burnley",
+    "url": "http://media-ice.musicradio.com/CapitalBurnley",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Chill",
+    "url": "http://media-ice.musicradio.com/CapitalChill",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Coventry",
+    "url": "http://media-ice.musicradio.com/CapitalCoventry",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital North Wales - Anglesey & Gwynedd",
+    "url": "http://media-ice.musicradio.com/CapitalCymru",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Dance",
+    "url": "http://media-ice.musicradio.com/CapitalDance",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Derbyshire",
+    "url": "http://media-ice.musicradio.com/CapitalDerbyshire",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital East Midlands",
+    "url": "http://media-ice.musicradio.com/CapitalEastMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Liverpool",
+    "url": "http://media-ice.musicradio.com/CapitalLiverpool",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Manchester",
+    "url": "http://media-ice.musicradio.com/CapitalManchester",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital North East",
+    "url": "http://media-ice.musicradio.com/CapitalNorthEast",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Scotland",
+    "url": "http://media-ice.musicradio.com/CapitalScotland",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital South Coast",
+    "url": "http://media-ice.musicradio.com/CapitalSouthCoast",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital South Wales",
+    "url": "http://media-ice.musicradio.com/CapitalSouthWales",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital Tyne & Wear",
+    "url": "http://media-ice.musicradio.com/CapitalTyneWear",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital XTRA",
+    "url": "http://media-ice.musicradio.com/CapitalXTRA",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Capital XTRA Reloaded",
+    "url": "http://media-ice.musicradio.com/CapitalXTRAReloaded",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Classic FM",
+    "url": "http://media-ice.musicradio.com/ClassicFM",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold",
+    "url": "http://media-ice.musicradio.com/Gold",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold Birmingham",
+    "url": "http://media-ice.musicradio.com/GoldBirmingham",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold Bristol",
+    "url": "http://media-ice.musicradio.com/GoldBristol",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold East Midlands",
+    "url": "http://media-ice.musicradio.com/GoldEastMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold London",
+    "url": "http://media-ice.musicradio.com/GoldLondon",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold Manchester",
+    "url": "http://media-ice.musicradio.com/GoldManchester",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold North East",
+    "url": "http://media-ice.musicradio.com/GoldNorthEast",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold Scotland",
+    "url": "http://media-ice.musicradio.com/GoldScotland",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold South Coast",
+    "url": "http://media-ice.musicradio.com/GoldSouthCoast",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold West Midlands",
+    "url": "http://media-ice.musicradio.com/GoldWestMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Gold Yorkshire",
+    "url": "http://media-ice.musicradio.com/GoldYorkshire",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart",
+    "url": "http://media-ice.musicradio.com/Heart",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart 70s",
+    "url": "http://media-ice.musicradio.com/Heart70s",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart 80s",
+    "url": "http://media-ice.musicradio.com/Heart80s",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart 90s",
+    "url": "http://media-ice.musicradio.com/Heart90s",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart Dance",
+    "url": "http://media-ice.musicradio.com/HeartDance",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart Extra",
+    "url": "http://media-ice.musicradio.com/HeartExtra",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart London",
+    "url": "http://media-ice.musicradio.com/HeartLondon",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart North West",
+    "url": "http://media-ice.musicradio.com/HeartNorthWest",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart Scotland",
+    "url": "http://media-ice.musicradio.com/HeartScotland",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart UK",
+    "url": "http://media-ice.musicradio.com/HeartUK",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart West Midlands",
+    "url": "http://media-ice.musicradio.com/HeartWestMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Heart Yorkshire",
+    "url": "http://media-ice.musicradio.com/HeartYorkshire",
+    "category": "UK Radio"
+  },
+  {
+    "name": "LBC",
+    "url": "http://media-ice.musicradio.com/LBC",
+    "category": "UK Radio"
+  },
+  {
+    "name": "LBC News",
+    "url": "http://media-ice.musicradio.com/LBCNews",
+    "category": "UK Radio"
+  },
+  {
+    "name": "LBC UK",
+    "url": "http://media-ice.musicradio.com/LBCUK",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Radio X",
+    "url": "http://media-ice.musicradio.com/RadioX",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Radio X Classic Rock",
+    "url": "http://media-ice.musicradio.com/RadioXClassicRock",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth",
+    "url": "http://media-ice.musicradio.com/Smooth",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Chill",
+    "url": "http://media-ice.musicradio.com/SmoothChill",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Country",
+    "url": "http://media-ice.musicradio.com/SmoothCountry",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth East Midlands",
+    "url": "http://media-ice.musicradio.com/SmoothEastMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Extra",
+    "url": "http://media-ice.musicradio.com/SmoothExtra",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth London",
+    "url": "http://media-ice.musicradio.com/SmoothLondon",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth North East",
+    "url": "http://media-ice.musicradio.com/SmoothNorthEast",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth North West",
+    "url": "http://media-ice.musicradio.com/SmoothNorthWest",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Plymouth",
+    "url": "http://media-ice.musicradio.com/SmoothPlymouth",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Relax",
+    "url": "http://media-ice.musicradio.com/SmoothRelax",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Scotland",
+    "url": "http://media-ice.musicradio.com/SmoothScotland",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Soul",
+    "url": "http://media-ice.musicradio.com/SmoothSoul",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth South Wales",
+    "url": "http://media-ice.musicradio.com/SmoothSouthWales",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Suffolk",
+    "url": "http://media-ice.musicradio.com/SmoothSuffolk",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Sussex",
+    "url": "http://media-ice.musicradio.com/SmoothSussex",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth UK",
+    "url": "http://media-ice.musicradio.com/SmoothUK",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth West Midlands",
+    "url": "http://media-ice.musicradio.com/SmoothWestMids",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Wiltshire",
+    "url": "http://media-ice.musicradio.com/SmoothWiltshire",
+    "category": "UK Radio"
+  },
+  {
+    "name": "Smooth Christmas",
+    "url": "http://media-ice.musicradio.com/SmoothXmas",
+    "category": "UK Radio"
+  },
+  {
+    "name": "WSQK",
+    "url": "http://media-ice.musicradio.com/WSQK",
+    "category": "UK Radio"
+  },
+  {
+    "name": "RTE 1",
+    "url": "http://icecast.rte.ie/radio1/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "RTE 1 Extra",
+    "url": "http://icecast.rte.ie/radio1extra/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "Pulse",
+    "url": "http://icecast.rte.ie/radio1/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "Ie2",
+    "url": "http://icecast.rte.ie/radio1/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "Ie1",
+    "url": "http://icecast.rte.ie/radio1/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "2fm",
+    "url": "http://icecast.rte.ie/radio1/listen.m3u",
+    "category": "Ireland"
+  },
+  {
+    "name": "Pub Radio",
+    "url": "https://irishpubradio.com/listen.m3u",
+    "category": "Ireland"
+  }
+]
+
